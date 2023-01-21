@@ -1,0 +1,22 @@
+{
+  "name": "level",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "level": {
+      "type": "number",
+      "required": true
+    },
+    "expCap": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

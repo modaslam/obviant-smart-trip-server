@@ -1,0 +1,29 @@
+{
+  "name": "rating",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "fiveStar": {
+      "type": "number"
+    },
+    "fourStar": {
+      "type": "number"
+    },
+    "threeStar": {
+      "type": "number"
+    },
+    "twoStar": {
+      "type": "number"
+    },
+    "oneStar": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

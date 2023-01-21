@@ -1,0 +1,40 @@
+{
+  "name": "trip",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "users": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "geoCoord": {
+      "type": [
+        "object"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "creator": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    },
+    "route": {
+      "type": "belongsTo",
+      "model": "routes",
+      "foreignKey": "routesId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,35 @@
+{
+  "name": "progress",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "currLevel": {
+      "type": "number",
+      "required": true,
+      "default": 1
+    },
+    "experience": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "totalDistance": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

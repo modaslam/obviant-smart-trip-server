@@ -1,0 +1,57 @@
+{
+  "name": "BattutaService",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "countries": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "data",
+          "type": "object",
+          "root": false,
+          "description": "Countries Response"
+        }
+      ],
+      "description": "Get list of countries using Battuta API",
+      "http": [
+        {
+          "path": "/countries",
+          "verb": "get"
+        }
+      ]
+    },
+    "regions": {
+      "accepts": [
+        {
+          "arg": "countryCode",
+          "type": "string",
+          "required": false,
+          "description": "Country code of regions"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "data",
+          "type": "object",
+          "root": false,
+          "description": "Regions Response"
+        }
+      ],
+      "description": "Get list of regions using Battuta API",
+      "http": [
+        {
+          "path": "/regions",
+          "verb": "get"
+        }
+      ]
+    }
+  }
+}

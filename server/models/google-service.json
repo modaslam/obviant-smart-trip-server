@@ -1,0 +1,163 @@
+{
+  "name": "GoogleService",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "places": {
+      "accepts": [
+        {
+          "arg": "searchString",
+          "type": "string",
+          "required": true,
+          "description": "search string"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "data",
+          "type": "object",
+          "root": false,
+          "description": "Places Response"
+        }
+      ],
+      "description": "Get places using google web service",
+      "http": [
+        {
+          "path": "/place/autocomplete",
+          "verb": "get"
+        }
+      ]
+    },
+    "geocode": {
+      "accepts": [
+        {
+          "arg": "address",
+          "type": "string",
+          "required": false,
+          "description": "Address to be geocoded"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "data",
+          "type": "object",
+          "root": false,
+          "description": "Response Data"
+        }
+      ],
+      "description": "Get geocode data using google api",
+      "http": [
+        {
+          "path": "/geocode",
+          "verb": "get"
+        }
+      ]
+    },
+    "reverseGeocode": {
+      "accepts": [
+        {
+          "arg": "latlng",
+          "type": "string",
+          "required": false,
+          "description": "latlng to be reverse geocoded"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "data",
+          "type": "object",
+          "root": false,
+          "description": "Response Data"
+        }
+      ],
+      "description": "Get reverse geocode data using google api",
+      "http": [
+        {
+          "path": "/reverseGeocode",
+          "verb": "get"
+        }
+      ]
+    },
+    "directions": {
+      "accepts": [
+        {
+          "arg": "origin",
+          "type": "string",
+          "required": false,
+          "description": "origin latlng"
+        },
+        {
+          "arg": "destination",
+          "type": "string",
+          "required": false,
+          "description": "destination latlng"
+        },
+        {
+          "arg": "waypoints",
+          "type": "string",
+          "required": false,
+          "description": "address of waypoints"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "data",
+          "type": "object",
+          "root": false,
+          "description": "Response Data"
+        }
+      ],
+      "description": "Get directions data using google api",
+      "http": [
+        {
+          "path": "/directions",
+          "verb": "get"
+        }
+      ]
+    },
+    "nearbySearch": {
+      "accepts": [
+        {
+          "arg": "location",
+          "type": "string",
+          "required": false,
+          "description": "origin latlng"
+        },
+        {
+          "arg": "rankby",
+          "type": "string",
+          "required": false,
+          "description": "parameter to rank results"
+        },
+        {
+          "arg": "type",
+          "type": "string",
+          "required": false,
+          "description": "type of places"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "data",
+          "type": "object",
+          "root": false,
+          "description": "Response Data"
+        }
+      ],
+      "description": "Get nearby places using google api",
+      "http": [
+        {
+          "path": "/nearbySearch",
+          "verb": "get"
+        }
+      ]
+    }
+  }
+}

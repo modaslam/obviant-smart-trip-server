@@ -1,0 +1,81 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "user": {
+    "dataSource": "db",
+    "public": true
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false,
+    "relations": {
+      "user": {
+        "type": "belongsTo",
+        "model": "user",
+        "foreignKey": "userId"
+      }
+    }
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "GoogleService": {
+    "dataSource": "geoRest",
+    "public": true
+  },
+  "routes": {
+    "dataSource": "db",
+    "public": true
+  },
+  "trip": {
+    "dataSource": "db",
+    "public": true
+  },
+  "FileStorage": {
+    "dataSource": "storage"
+  },
+  "BattutaService": {
+    "dataSource": "battutaRest",
+    "public": true
+  },
+  "friendship": {
+    "dataSource": "db",
+    "public": true
+  },
+  "progress": {
+    "dataSource": "db",
+    "public": true
+  },
+  "level": {
+    "dataSource": "db",
+    "public": true
+  },
+  "rating": {
+    "dataSource": "db",
+    "public": true
+  }
+}

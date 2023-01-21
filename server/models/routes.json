@@ -1,0 +1,70 @@
+{
+  "name": "routes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "distance": {
+      "type": "number",
+      "required": true
+    },
+    "legs": {
+      "type": "object",
+      "required": true
+    },
+    "overviewPolyline": {
+      "type": "string",
+      "required": true
+    },
+    "latlngPolyline": {
+      "type": [
+        "object"
+      ],
+      "required": true
+    },
+    "duration": {
+      "type": "number",
+      "required": true
+    },
+    "waypoints": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "rating": {
+      "type": "number",
+      "default": 0
+    },
+    "tripCount": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    },
+    "trips": {
+      "type": "hasMany",
+      "model": "trip",
+      "foreignKey": "routesId"
+    },
+    "rating": {
+      "type": "hasOne",
+      "model": "rating",
+      "foreignKey": "routesId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,185 @@
+{
+  "db": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "",
+    "database": "smarttrip",
+    "password": "",
+    "name": "db",
+    "user": "",
+    "connector": "mongodb"
+  },
+  "geoRest": {
+    "name": "geoRest",
+    "connector": "rest",
+    "debug": "false",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "https://maps.googleapis.com/maps/api/geocode/{format=json}",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "address": "{address}",
+            "sensor": "{sensor=false}",
+            "key": "{apiKey}"
+          }
+        },
+        "functions": {
+          "googleGeocode": [
+            "address",
+            "apiKey"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "https://maps.googleapis.com/maps/api/geocode/{format=json}",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "latlng": "{latlng}",
+            "sensor": "{sensor=false}",
+            "key": "{apiKey}"
+          }
+        },
+        "functions": {
+          "googleReverseGeocode": [
+            "latlng",
+            "apiKey"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "https://maps.googleapis.com/maps/api/directions/{format=json}",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "origin": "{origin}",
+            "destination": "{destination}",
+            "waypoints": "{waypoints}",
+            "alternatives": "{alternatives=true}",
+            "sensor": "{sensor=false}",
+            "key": "{apiKey}"
+          }
+        },
+        "functions": {
+          "googleDirections": [
+            "origin",
+            "destination",
+            "waypoints",
+            "apiKey"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "https://maps.googleapis.com/maps/api/place/autocomplete/{format=json}",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "input": "{searchString}",
+            "sensor": "{sensor=false}",
+            "key": "{apiKey}"
+          }
+        },
+        "functions": {
+          "googleAutocomplete": [
+            "searchString",
+            "apiKey"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "https://maps.googleapis.com/maps/api/place/nearbysearch/{format=json}",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "location": "{location}",
+            "rankby": "{rankby}",
+            "type": "{type}",
+            "sensor": "{sensor=false}",
+            "key": "{apiKey}"
+          }
+        },
+        "functions": {
+          "googleNearbySearch": [
+            "location",
+            "rankby",
+            "type",
+            "apiKey"
+          ]
+        }
+      }
+    ]
+  },
+  "battutaRest": {
+    "name": "battutaRest",
+    "connector": "rest",
+    "debug": "false",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://battuta.medunes.net/api/country/all",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "key": "{apiKey}"
+          }
+        },
+        "functions": {
+          "battutaCountries": [
+            "apiKey"
+          ]
+        }
+      },
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://battuta.medunes.net/api/region/:countryCode/all",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "countryCode": "{countryCode}",
+            "key": "{apiKey}"
+          }
+        },
+        "functions": {
+          "battutaRegions": [
+            "countryCode",
+            "apiKey"
+          ]
+        }
+      }
+    ]
+  },
+  "storage": {
+    "name": "storage",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./files",
+    "maxFileSize": "5002428800"
+  }
+}
